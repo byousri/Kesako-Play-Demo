@@ -20,6 +20,7 @@
 > There is no need to *install* Play as such, although you might want to add the download's directory to your `PATH`, so you can execute the `$PLAY_HOME/play` commmand directly. On my machine, though, it's just as easy to just type `~/Downloads/play-1.2.4/play` for this kind of demo.
 
 **Execute** `play new tasks`
+
     ~ What is the application name? tasks`
 
 > A task list application is an easy example for people to understand, but it is more fun to pick an example that is more familiar and relevant to your audience, such as 'customers' or 'cocktails'.
