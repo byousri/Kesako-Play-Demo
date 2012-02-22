@@ -79,9 +79,8 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
 
 **Edit** `app/controllers/Application.java` - Change the `index()` method body to the following (omitting a semi-colon).
 
-<div class="code">
-<pre class="brush: java; gutter: false">final String items = "Things"
-render(items);</pre></div>
+    final String items = "Things"
+    render(items);
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the Java compilation error.
 
