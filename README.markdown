@@ -157,7 +157,7 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the JPA error.
 
-**Edit** `conf/application.conf` - Uncomment the line `## db=mem`
+**Edit** `conf/application.conf` - Uncomment the line `# db=mem`
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the page - no kesakos.
 
