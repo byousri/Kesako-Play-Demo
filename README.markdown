@@ -25,17 +25,17 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
 
 > There is no need to *install* Play as such, although you might want to add the download's directory to your `PATH`, so you can execute the `$PLAY_HOME/play` commmand directly. On my machine, though, it's just as easy to just type `~/Downloads/play-1.2.4/play` for this kind of demo.
 
-**Execute** `play new tasks`
+**Execute** `play new kesakos`
 
-    ~ What is the application name? tasks
+    ~ What is the application name? kesakos
 
-> A task list application is an easy example for people to understand, but it is more fun to pick an example that is more familiar and relevant to your audience, such as 'customers' or 'cocktails'.
+> A kesako list application is an easy example for people to understand, but it is more fun to pick an example that is more familiar and relevant to your audience, such as 'customers' or 'cocktails'.
 
-**Execute** `find tasks -type f` (optional) - List the generated files
+**Execute** `find kesakos -type f` (optional) - List the generated files
 
 > It is crucial to note that Play has not generated a lot of code here; the files are minimal stubs that you will only add to, rather than a lot of generated code that you will have to delete.
 
-**Execute** `play run tasks` - Start the Play server runtime to run the application.
+**Execute** `play run kesakos` - Start the Play server runtime to run the application.
 
 > Depending on what you are used to, start-up time may seem extremely short.
 
@@ -55,7 +55,7 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
 
 **Edit** `app/views/main.html` - Show the default template: HTML 5, CSS and jQuery.
 
-**Edit** `app/views/Application/index.html` - Show the `#{welcome /}` tag and replace it with `<h1>Tasks</h1>`.
+**Edit** `app/views/Application/index.html` - Show the `#{welcome /}` tag and replace it with `<h1>Kesakos</h1>`.
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the heading.
 
@@ -63,7 +63,7 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
 
     html { border-top: 5px solid #67A927;  }
     body { font-family:"Helvetica Neue"; padding:2em; background: #F7F7F7 url(/public/playmanual/logo.png) no-repeat 98% 20%; }
-    body:before { content:'Play task list demo'; color:#568C00; font-size:150%; text-transform:uppercase; letter-spacing:0.4em; }
+    body:before { content:'Play kesako list demo'; color:#568C00; font-size:150%; text-transform:uppercase; letter-spacing:0.4em; }
     ul { padding:0; list-style:none; }
     li, form { width:30em; background:white; padding:1em; border:1px solid #ccc; border-radius:0.5em; margin:1em 0; position:relative; }
     li a { text-decoration:none; color:transparent; position:absolute; top:1em; right:1em; }
@@ -111,11 +111,11 @@ render(items);</pre></div>
 
 **Execute** `Control+C` - Show how little logging there is by default.
 
-**Execute** `play eclipsify tasks` - Generate Eclipse project and class path configuration.
+**Execute** `play eclipsify kesakos` - Generate Eclipse project and class path configuration.
 
 **Eclipse** *File => Import... => Existing projects into workspace* - Show project structure.
 
-**Eclipse** `eclipse/tasks.launch` => Run => tasks - Start the Play server runtime from within Eclipse.
+**Eclipse** `eclipse/kesakos.launch` => Run => kesakos - Start the Play server runtime from within Eclipse.
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the application running.
 
@@ -124,11 +124,11 @@ render(items);</pre></div>
 
 **Execute** `Control+C` - Show how little logging there is by default.
 
-**Execute** `play idealize tasks` - Generate IDEA project and class path configuration.
+**Execute** `play idealize kesakos` - Generate IDEA project and class path configuration.
 
-**Execute** `open tasks/tasks.ipr` - Open the project in IDEA.
+**Execute** `open kesakos/kesakos.ipr` - Open the project in IDEA.
 
-**Execute** `play run tasks` - Start the Play server again.
+**Execute** `play run kesakos` - Start the Play server again.
 
 
 ## JPA entity
@@ -136,23 +136,23 @@ render(items);</pre></div>
 **Edit** `app/models` - create class:
 
     @Entity
-    public class Task extends play.db.jpa.Model {
+    public class Kesako extends play.db.jpa.Model {
     
        public String title;
     }
 
-> At this point you may need to explain that `Task` is a Java Bean at run-time, because Play dynamically adds getter and setter methods for the public fields, turning them into normal Java Bean properties.
+> At this point you may need to explain that `Kesako` is a Java Bean at run-time, because Play dynamically adds getter and setter methods for the public fields, turning them into normal Java Bean properties.
 
 **Edit** `app/controllers/Application.java` - Change the `index()` method body to
 
-    List tasks = Task.findAll();
-    render(tasks);
+    List kesakos = Kesako.findAll();
+    render(kesakos);
 
 **Edit** `app/views/Application/index.html` - After the heading, add:
 
     <ul>
-    #{list tasks, as:'task'}
-       <li>${task.title}</li>
+    #{list kesakos, as:'kesako'}
+       <li>${kesako.title}</li>
     #{/list}
     </ul>
 
@@ -160,7 +160,7 @@ render(items);</pre></div>
 
 **Edit** `conf/application.conf` - Uncomment the line `## db=mem`
 
-**Open** [http://localhost:9000/](http://localhost:9000/) - Show the page - no tasks.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show the page - no kesakos.
 
 
 ## HTML form
@@ -169,26 +169,26 @@ render(items);</pre></div>
 
     #{form @add()}
     <p>
-      <input name="task.title" autofocus>
+      <input name="kesako.title" autofocus>
     
-      <button type="submit">Add Task</button>
+      <button type="submit">Add Kesako</button>
     </p>
     #{/form}
 
 **Edit** `app/controllers/Application.java` - Add the method:
 
-    public static void add(final Task task) {
-       task.save();
+    public static void add(final Kesako kesako) {
+       kesako.save();
        index();
     }
 
-**Open** [http://localhost:9000/](http://localhost:9000/) - Add tasks.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Add kesakos.
 
 ## Command link
 
 **Edit** `app/views/Application/index.html` - Inside the `<li>` add a link:
 
-    <a href="@{delete(task.id)}">delete</a>
+    <a href="@{delete(kesako.id)}">delete</a>
 
 > As for forms, there is also a tag for generating links; this way just generates the URL.
 
@@ -197,36 +197,36 @@ render(items);</pre></div>
 **Edit** `app/controllers/Application.java` - Add the method, noting the `id` parameter:
 
     public static void delete(final Long id) {
-       Task task = Task.findById(id);
-       task.delete();
+       Kesako kesako = Kesako.findById(id);
+       kesako.delete();
        index();
     }
 
-**Open** [http://localhost:9000/](http://localhost:9000/) - Delete tasks - show the link URL and query string parameter.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Delete kesakos - show the link URL and query string parameter.
 
 **Edit** `conf/routes` - Change the delete route to `GET /delete/{id} Application.delete`
 
-**Open** [http://localhost:9000/](http://localhost:9000/) - Delete tasks - show the link URL and URL path parameter.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Delete kesakos - show the link URL and URL path parameter.
 
 ## Java extensions
 
 **Edit** `app/views/Application/index.html` - Change the heading to:
 
-    <h1>${tasks.size()} Task${tasks.pluralize()}</h1>
+    <h1>${kesakos.size()} Kesako${kesakos.pluralize()}</h1>
 
-**Open** [http://localhost:9000/](http://localhost:9000/) - Add/delete tasks to show singular and plural forms.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Add/delete kesakos to show singular and plural forms.
 
-> If you are lucky, at this point someone in the audience will be smart enough to point out that some plurals are not just formed by adding an 's', at which point you can change the example, and show the `pluralize` method with one or more parameters, e.g. `${tasks.pluralize(messages.get('task'), messages.get('tasks'))`}
+> If you are lucky, at this point someone in the audience will be smart enough to point out that some plurals are not just formed by adding an 's', at which point you can change the example, and show the `pluralize` method with one or more parameters, e.g. `${kesakos.pluralize(messages.get('kesako'), messages.get('kesakos'))`}
 
 ## Form validation
 
-**Edit** `app/controllers/Application.java` - Add the `@Valid` annotation to the add method's `Shipment` parameter, replace the first line of the method body (`Task.save();`) with the following.
+**Edit** `app/controllers/Application.java` - Add the `@Valid` annotation to the add method's `Shipment` parameter, replace the first line of the method body (`Kesako.save();`) with the following.
 
     if (validation.hasErrors()) {
        validation.keep();
     }
     else {
-       task.save();			
+       kesako.save();			
     }
 
 **Edit** `app/views/Application/index.html` - immediately after the `form` tag, add:
@@ -246,7 +246,7 @@ render(items);</pre></div>
 
 > Now we get the field name, but not as a formatted label.
 
-**Edit** `conf/messages` - Change the placeholder in `validation.required` to `&{%s}`, and add the line `task.name = Task name`
+**Edit** `conf/messages` - Change the placeholder in `validation.required` to `&{%s}`, and add the line `kesako.name = Kesako name`
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
 
@@ -260,7 +260,7 @@ render(items);</pre></div>
 
 ... and after the text input and button, before the closing `form` tag, add:
 
-    <p class="error">#{error 'task.title'/}</p>
+    <p class="error">#{error 'kesako.title'/}</p>
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
 
