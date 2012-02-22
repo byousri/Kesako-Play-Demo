@@ -31,7 +31,7 @@
 
 > Depending on what you are used to, start-up time may seem extremely short.
 
-**Open** http://localhost:9000/ - Show welcome page.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show welcome page.
 
 > The welcome page describes how the stub application works, which the next few steps show.
 
