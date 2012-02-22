@@ -1,4 +1,8 @@
-# Summary
+# Live coding demo : Kesako in Play 1.2.x
+
+Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-demo-play-framework-live-coding-script](http://www.lunatech-research.com/archives/2010/06/14/how-demo-play-framework-live-coding-script).
+
+## Summary
 1. Download the Play framework.
 2. Create and run the application.
 3. Inspect the set-up for the default welcome page.
@@ -12,8 +16,10 @@
 11. Add a link for deleting each instance.
 12. Use a Java extensions in the view template.
 13. Add form validation.
+14. Testing (TODO)
+15. CRUD (TODO)
 
-# Create and run the application
+## Create and run the application
 
 **Open** [http://www.playframework.org/](http://www.playframework.org/) Download the binary
 
@@ -67,7 +73,7 @@
     button { cursor:pointer; color: white; background-color: #3D6F04; background-image: -webkit-linear-gradient(top, #5AA706, #3D6F04); text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); border: 1px solid #CCC; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); border-radius:4px; }
     p.error { margin:0; color:#c00; }
 
-# Show dynamic data in the template
+## Show dynamic data in the template
 
 **Edit** `app/views/Application/index.html` - Change the heading to `<h1>${items}</h1>`.
 
@@ -90,7 +96,7 @@ render(items);</pre></div>
 **Edit** `app/controllers/Application.java` - Undo the last change - remove the parameter and put the declaration back.
 
 
-# Show message file content in the template
+## Show message file content in the template
 
 **Edit** `app/views/Application/index.html` - Change the heading to `<h1>&{'model.shipments'}</h1>`.
 
@@ -101,7 +107,7 @@ render(items);</pre></div>
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the message being displayed.
 
 
-# Eclipse
+## Eclipse
 
 **Execute** `Control+C` - Show how little logging there is by default.
 
@@ -114,7 +120,7 @@ render(items);</pre></div>
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the application running.
 
 
-# IntelliJ IDEA
+## IntelliJ IDEA
 
 **Execute** `Control+C` - Show how little logging there is by default.
 
@@ -125,7 +131,7 @@ render(items);</pre></div>
 **Execute** `play run tasks` - Start the Play server again.
 
 
-# JPA entity
+## JPA entity
 
 **Edit** `app/models` - create class:
 
@@ -152,12 +158,12 @@ render(items);</pre></div>
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the JPA error.
 
-**Edit** `conf/application.conf` - Uncomment the line `# db=mem`
+**Edit** `conf/application.conf` - Uncomment the line `## db=mem`
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the page - no tasks.
 
 
-# HTML form
+## HTML form
 
 **Edit** `app/views/Application/index.html` - After the list, add:
 
@@ -178,7 +184,7 @@ render(items);</pre></div>
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Add tasks.
 
-# Command link
+## Command link
 
 **Edit** `app/views/Application/index.html` - Inside the `<li>` add a link:
 
@@ -202,7 +208,7 @@ render(items);</pre></div>
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Delete tasks - show the link URL and URL path parameter.
 
-# Java extensions
+## Java extensions
 
 **Edit** `app/views/Application/index.html` - Change the heading to:
 
@@ -212,7 +218,7 @@ render(items);</pre></div>
 
 > If you are lucky, at this point someone in the audience will be smart enough to point out that some plurals are not just formed by adding an 's', at which point you can change the example, and show the `pluralize` method with one or more parameters, e.g. `${tasks.pluralize(messages.get('task'), messages.get('tasks'))`}
 
-# Form validation
+## Form validation
 
 **Edit** `app/controllers/Application.java` - Add the `@Valid` annotation to the add method's `Shipment` parameter, replace the first line of the method body (`Task.save();`) with the following.
 
@@ -240,7 +246,7 @@ render(items);</pre></div>
 
 > Now we get the field name, but not as a formatted label.
 
-**Edit** `conf/messages` - Change the placeholder in `validation.required` to `&{%s`}, and add the line `task.name = Task name`
+**Edit** `conf/messages` - Change the placeholder in `validation.required` to `&{%s}`, and add the line `task.name = Task name`
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
 
