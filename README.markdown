@@ -107,9 +107,9 @@ render(items);</pre></div>
 
 **Execute** `play eclipsify tasks` - Generate Eclipse project and class path configuration.
 
-**Eclipse** *File » Import… » Existing projects into workspace* - Show project structure.
+**Eclipse** *File => Import... => Existing projects into workspace* - Show project structure.
 
-**Eclipse** `eclipse/tasks.launch` » Run » tasks - Start the Play server runtime from within Eclipse.
+**Eclipse** `eclipse/tasks.launch` => Run => tasks - Start the Play server runtime from within Eclipse.
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the application running.
 
