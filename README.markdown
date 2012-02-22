@@ -49,28 +49,27 @@
 
 **Edit** `app/views/main.html` - Show the default template: HTML 5, CSS and jQuery.
 
-**Edit** `app/views/Application/index.html` - Show the `#{welcome /`} tag and replace it with `&lt;h1&gt;Tasks&lt;/h1&gt;`.
+**Edit** `app/views/Application/index.html` - Show the `#{welcome /}` tag and replace it with `<h1>Tasks</h1>`.
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the heading.
 
 **Edit** `public/stylesheets/main.css` - Add some CSS to make things less ugly:
 
-<div class="code">
-<pre class="brush: css; gutter: false">html { border-top: 5px solid #67A927;  }
-body { font-family:"Helvetica Neue"; padding:2em; background: #F7F7F7 url(/public/playmanual/logo.png) no-repeat 98% 20%; }
-body:before { content:'Play task list demo'; color:#568C00; font-size:150%; text-transform:uppercase; letter-spacing:0.4em; }
-ul { padding:0; list-style:none; }
-li, form { width:30em; background:white; padding:1em; border:1px solid #ccc; border-radius:0.5em; margin:1em 0; position:relative; }
-li a { text-decoration:none; color:transparent; position:absolute; top:1em; right:1em; }
-li a:after { content:'?'; color:#aaa; font-size:120%; font-weight:bold; }
-form * { font-size:120%; }
-input { width:16em; }
-button { cursor:pointer; color: white; background-color: #3D6F04; background-image: -webkit-linear-gradient(top, #5AA706, #3D6F04); text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); border: 1px solid #CCC; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); border-radius:4px; }
-p.error { margin:0; color:#c00; }</pre></div>
+    html { border-top: 5px solid #67A927;  }
+    body { font-family:"Helvetica Neue"; padding:2em; background: #F7F7F7 url(/public/playmanual/logo.png) no-repeat 98% 20%; }
+    body:before { content:'Play task list demo'; color:#568C00; font-size:150%; text-transform:uppercase; letter-spacing:0.4em; }
+    ul { padding:0; list-style:none; }
+    li, form { width:30em; background:white; padding:1em; border:1px solid #ccc; border-radius:0.5em; margin:1em 0; position:relative; }
+    li a { text-decoration:none; color:transparent; position:absolute; top:1em; right:1em; }
+    li a:after { content:'?'; color:#aaa; font-size:120%; font-weight:bold; }
+    form * { font-size:120%; }
+    input { width:16em; }
+    button { cursor:pointer; color: white; background-color: #3D6F04; background-image: -webkit-linear-gradient(top, #5AA706, #3D6F04); text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); border: 1px solid #CCC; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); border-radius:4px; }
+    p.error { margin:0; color:#c00; }
 
 # Show dynamic data in the template
 
-**Edit** `app/views/Application/index.html` - Change the heading to `&lt;h1&gt;${items}&lt;/h1&gt;`.
+**Edit** `app/views/Application/index.html` - Change the heading to `<h1>${items}</h1>`.
 
 **Edit** `app/controllers/Application.java` - Change the `index()` method body to the following (omitting a semi-colon).
 
@@ -93,7 +92,7 @@ render(items);</pre></div>
 
 # Show message file content in the template
 
-**Edit** `app/views/Application/index.html` - Change the heading to `&lt;h1&gt;&amp;{'model.shipments'}&lt;/h1&gt;`.
+**Edit** `app/views/Application/index.html` - Change the heading to `<h1>&amp;{'model.shipments'}</h1>`.
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the message key being displayed, because the message is not defined.
 
@@ -148,11 +147,11 @@ render(tasks);</pre></div>
 **Edit** `app/views/Application/index.html` - After the heading, add:
 
 <div class="code">
-<pre class="brush: html; gutter: false">&lt;ul&gt;
+<pre class="brush: html; gutter: false"><ul>
 #{list tasks, as:'task'}
-   &lt;li&gt;${task.title}&lt;/li&gt;
+   <li>${task.title}</li>
 #{/list}
-&lt;/ul&gt;</pre></div>
+</ul></pre></div>
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the JPA error.
 
@@ -167,11 +166,11 @@ render(tasks);</pre></div>
 
 <div class="code">
 <pre class="brush: html; gutter: false">#{form @add()}
-&lt;p&gt;
-  &lt;input name="task.title" autofocus&gt;
+<p>
+  <input name="task.title" autofocus>
 
-  &lt;button type="submit"&gt;Add Task&lt;/button&gt;
-&lt;/p&gt;
+  <button type="submit">Add Task</button>
+</p>
 #{/form}</pre></div>
 
 **Edit** `app/controllers/Application.java` - Add the method:
@@ -187,10 +186,10 @@ render(tasks);</pre></div>
 
 # Command link
 
-**Edit** `app/views/Application/index.html` - Inside the `&lt;li&gt;` add a link:
+**Edit** `app/views/Application/index.html` - Inside the `<li>` add a link:
 
 <div class="code">
-<pre class="brush: html; gutter: false">&lt;a href="@{delete(task.id)}"&gt;delete&lt;/a&gt;</pre></div>
+<pre class="brush: html; gutter: false"><a href="@{delete(task.id)}">delete</a></pre></div>
 
 > As for forms, there is also a tag for generating links; this way just generates the URL.
 
@@ -217,7 +216,7 @@ render(tasks);</pre></div>
 **Edit** `app/views/Application/index.html` - Change the heading to:
 
 <div class="code">
-<pre class="brush: html; gutter: false">&lt;h1&gt;${tasks.size()} Task${tasks.pluralize()}&lt;/h1&gt;</pre></div>
+<pre class="brush: html; gutter: false"><h1>${tasks.size()} Task${tasks.pluralize()}</h1></pre></div>
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Add/delete tasks to show singular and plural forms.
 
@@ -240,7 +239,7 @@ else {
 
 <div class="code">
 <pre class="brush: html; gutter: false">#{errors}
-    &lt;p class="error"&gt;${error}&lt;/p&gt;
+    <p class="error">${error}</p>
 
 #{/errors}</pre></div>
 
@@ -264,13 +263,13 @@ else {
 
 <div class="code">
 <pre class="brush: html; gutter: false">#{ifErrors}
-    &lt;p class="error"&gt;Validation failed&lt;/p&gt;
+    <p class="error">Validation failed</p>
 #{/ifErrors}</pre></div>
 
 … and after the text input and button, before the closing `form` tag, add:
 
 <div class="code">
 
-<pre class="brush: html; gutter: false">&lt;p class="error"&gt;#{error 'task.title'/}&lt;/p&gt;</pre></div>
+<pre class="brush: html; gutter: false"><p class="error">#{error 'task.title'/}</p></pre></div>
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
