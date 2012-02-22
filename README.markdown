@@ -144,8 +144,10 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
 
 **Edit** `app/controllers/Application.java` - Change the `index()` method body to
 
-    List kesakos = Kesako.findAll();
-    render(kesakos);
+```java
+List kesakos = Kesako.findAll();
+render(kesakos);
+```
 
 **Edit** `app/views/Application/index.html` - After the heading, add:
 
