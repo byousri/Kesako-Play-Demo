@@ -139,9 +139,8 @@ render(items);</pre></div>
 
 **Edit** `app/controllers/Application.java` - Change the `index()` method body to
 
-<div class="code">
-<pre class="brush: java; gutter: false">List tasks = Task.findAll();
-render(tasks);</pre></div>
+    List tasks = Task.findAll();
+    render(tasks);
 
 **Edit** `app/views/Application/index.html` - After the heading, add:
 
