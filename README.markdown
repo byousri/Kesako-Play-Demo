@@ -15,7 +15,7 @@
 
 # Create and run the application
 
-**Open** <a href="http://www.playframework.org/" class="external-link">http://www.playframework.org/</a> Download the binary
+**Open** [http://www.playframework.org/](http://www.playframework.org/) Download the binary
 
 > There is no need to *install* Play as such, although you might want to add the download's directory to your `PATH`, so you can execute the `$PLAY_HOME/play` commmand directly. On my machine, though, it's just as easy to just type `~/Downloads/play-1.2.4/play` for this kind of demo.
 
@@ -31,7 +31,7 @@
 
 > Depending on what you are used to, start-up time may seem extremely short.
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Show welcome page.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show welcome page.
 
 > The welcome page describes how the stub application works, which the next few steps show.
 
@@ -49,7 +49,7 @@
 
 **Edit** `app/views/Application/index.html` - Show the `#{welcome /`} tag and replace it with `&lt;h1&gt;Tasks&lt;/h1&gt;`.
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Show the heading.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show the heading.
 
 **Edit** `public/stylesheets/main.css` - Add some CSS to make things less ugly:
 
@@ -76,15 +76,15 @@ p.error { margin:0; color:#c00; }</pre></div>
 <pre class="brush: java; gutter: false">final String items = "Things"
 render(items);</pre></div>
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Show the Java compilation error.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show the Java compilation error.
 
 **Edit** `app/controllers/Application.java` - Add the missing semi-colon.
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Show the new heading, and Java changes without compilation or deployment.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show the new heading, and Java changes without compilation or deployment.
 
 **Edit** `app/controllers/Application.java` - Replace the `items` declaration line with a `String items` method parameter.
 
-**Open** <a href="http://localhost:9000/?items=Things" class="external-link">http://localhost:9000/?items=Things</a>
+**Open** [http://localhost:9000/?items=Things](http://localhost:9000/?items=Things)
 
 **Edit** `app/controllers/Application.java` - Undo the last change - remove the parameter and put the declaration back.
 
@@ -93,11 +93,11 @@ render(items);</pre></div>
 
 **Edit** `app/views/Application/index.html` - Change the heading to `&lt;h1&gt;&amp;{'model.shipments'}&lt;/h1&gt;`.
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Show the message key being displayed, because the message is not defined.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show the message key being displayed, because the message is not defined.
 
 **Edit** `conf/messages` - Add the line `model.shipments = Shipments`
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Show the message being displayed.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show the message being displayed.
 
 
 # Eclipse
@@ -110,7 +110,7 @@ render(items);</pre></div>
 
 **Eclipse** `eclipse/tasks.launch` » Run » tasks - Start the Play server runtime from within Eclipse.
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Show the application running.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show the application running.
 
 
 # IntelliJ IDEA
@@ -152,11 +152,11 @@ render(tasks);</pre></div>
 #{/list}
 &lt;/ul&gt;</pre></div>
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Show the JPA error.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show the JPA error.
 
 **Edit** `conf/application.conf` - Uncomment the line `# db=mem`
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Show the page - no tasks.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show the page - no tasks.
 
 
 # HTML form
@@ -180,7 +180,7 @@ render(tasks);</pre></div>
    index();
 }</pre></div>
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Add tasks.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Add tasks.
 
 
 # Command link
@@ -203,11 +203,11 @@ render(tasks);</pre></div>
    index();
 }</pre></div>
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Delete tasks - show the link URL and query string parameter.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Delete tasks - show the link URL and query string parameter.
 
 **Edit** `conf/routes` - Change the delete route to `GET /delete/{id} Application.delete`
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Delete tasks - show the link URL and URL path parameter.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Delete tasks - show the link URL and URL path parameter.
 
 
 # Java extensions
@@ -217,7 +217,7 @@ render(tasks);</pre></div>
 <div class="code">
 <pre class="brush: html; gutter: false">&lt;h1&gt;${tasks.size()} Task${tasks.pluralize()}&lt;/h1&gt;</pre></div>
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Add/delete tasks to show singular and plural forms.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Add/delete tasks to show singular and plural forms.
 
 > If you are lucky, at this point someone in the audience will be smart enough to point out that some plurals are not just formed by adding an 's', at which point you can change the example, and show the `pluralize` method with one or more parameters, e.g. `${tasks.pluralize(messages.get('task'), messages.get('tasks'))`}
 
@@ -242,19 +242,19 @@ else {
 
 #{/errors}</pre></div>
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Show the validation error when submitting an empty name.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show the validation error when submitting an empty name.
 
 > The validation error is just 'Required', but we can change this.
 
 **Edit** `conf/messages` - Add the line `validation.required = %s is a required field`
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Show the new validation error.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
 
 > Now we get the field name, but not as a formatted label.
 
 **Edit** `conf/messages` - Change the placeholder in `validation.required` to `&amp;{%s`}, and add the line `task.name = Task name`
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Show the new validation error.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
 
 > This lists validation errors in one place. A better way is to list the errors next to each field.
 
@@ -271,4 +271,4 @@ else {
 
 <pre class="brush: html; gutter: false">&lt;p class="error"&gt;#{error 'task.title'/}&lt;/p&gt;</pre></div>
 
-**Open** <a href="http://localhost:9000/" class="external-link">http://localhost:9000/</a> - Show the new validation error.
+**Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
