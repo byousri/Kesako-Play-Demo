@@ -161,32 +161,28 @@ render(items);</pre></div>
 
 **Edit** `app/views/Application/index.html` - After the list, add:
 
-<div class="code">
-<pre class="brush: html; gutter: false">#{form @add()}
-<p>
-  <input name="task.title" autofocus>
-
-  <button type="submit">Add Task</button>
-</p>
-#{/form}</pre></div>
+    #{form @add()}
+    <p>
+      <input name="task.title" autofocus>
+    
+      <button type="submit">Add Task</button>
+    </p>
+    #{/form}
 
 **Edit** `app/controllers/Application.java` - Add the method:
 
-<div class="code">
-<pre class="brush: java; gutter: false">public static void add(final Task task) {
-   task.save();
-   index();
-}</pre></div>
+    public static void add(final Task task) {
+       task.save();
+       index();
+    }
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Add tasks.
-
 
 # Command link
 
 **Edit** `app/views/Application/index.html` - Inside the `<li>` add a link:
 
-<div class="code">
-<pre class="brush: html; gutter: false"><a href="@{delete(task.id)}">delete</a></pre></div>
+    <a href="@{delete(task.id)}">delete</a>
 
 > As for forms, there is also a tag for generating links; this way just generates the URL.
 
@@ -194,12 +190,11 @@ render(items);</pre></div>
 
 **Edit** `app/controllers/Application.java` - Add the method, noting the `id` parameter:
 
-<div class="code">
-<pre class="brush: java; gutter: false">public static void delete(final Long id) {
-   Task task = Task.findById(id);
-   task.delete();
-   index();
-}</pre></div>
+    public static void delete(final Long id) {
+       Task task = Task.findById(id);
+       task.delete();
+       index();
+    }
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Delete tasks - show the link URL and query string parameter.
 
@@ -207,38 +202,33 @@ render(items);</pre></div>
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Delete tasks - show the link URL and URL path parameter.
 
-
 # Java extensions
 
 **Edit** `app/views/Application/index.html` - Change the heading to:
 
-<div class="code">
-<pre class="brush: html; gutter: false"><h1>${tasks.size()} Task${tasks.pluralize()}</h1></pre></div>
+    <h1>${tasks.size()} Task${tasks.pluralize()}</h1>
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Add/delete tasks to show singular and plural forms.
 
 > If you are lucky, at this point someone in the audience will be smart enough to point out that some plurals are not just formed by adding an 's', at which point you can change the example, and show the `pluralize` method with one or more parameters, e.g. `${tasks.pluralize(messages.get('task'), messages.get('tasks'))`}
 
-
 # Form validation
 
 **Edit** `app/controllers/Application.java` - Add the `@Valid` annotation to the add method's `Shipment` parameter, replace the first line of the method body (`Task.save();`) with the following.
 
-<div class="code">
-<pre class="brush: java; gutter: false">if (validation.hasErrors()) {
-   validation.keep();
-}
-else {
-   task.save();			
-}</pre></div>
+    if (validation.hasErrors()) {
+       validation.keep();
+    }
+    else {
+       task.save();			
+    }
 
 **Edit** `app/views/Application/index.html` - immediately after the `form` tag, add:
 
-<div class="code">
-<pre class="brush: html; gutter: false">#{errors}
-    <p class="error">${error}</p>
-
-#{/errors}</pre></div>
+    #{errors}
+        <p class="error">${error}</p>
+    
+    #{/errors}
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the validation error when submitting an empty name.
 
@@ -258,15 +248,12 @@ else {
 
 **Edit** `app/views/Application/index.html` - Replace the errors tag with:
 
-<div class="code">
-<pre class="brush: html; gutter: false">#{ifErrors}
-    <p class="error">Validation failed</p>
-#{/ifErrors}</pre></div>
+    #{ifErrors}
+        <p class="error">Validation failed</p>
+    #{/ifErrors}</pre></div>
 
-… and after the text input and button, before the closing `form` tag, add:
+... and after the text input and button, before the closing `form` tag, add:
 
-<div class="code">
-
-<pre class="brush: html; gutter: false"><p class="error">#{error 'task.title'/}</p></pre></div>
+    <p class="error">#{error 'task.title'/}</p>
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
