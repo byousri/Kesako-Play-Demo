@@ -129,12 +129,11 @@ render(items);</pre></div>
 
 **Edit** `app/models` - create class:
 
-<div class="code">
-<pre class="brush: java; gutter: false">@Entity
-public class Task extends play.db.jpa.Model {
-
-   public String title;
-}</pre></div>
+    @Entity
+    public class Task extends play.db.jpa.Model {
+    
+       public String title;
+    }
 
 > At this point you may need to explain that `Task` is a Java Bean at run-time, because Play dynamically adds getter and setter methods for the public fields, turning them into normal Java Bean properties.
 
