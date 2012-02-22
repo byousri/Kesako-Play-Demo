@@ -17,7 +17,7 @@
 
 **Open** <a href="http://www.playframework.org/" class="external-link">http://www.playframework.org/</a> Download the binary
 
-> There is no need to <em>install</em> Play as such, although you might want to add the download's directory to your <tt>PATH</tt>, so you can execute the <tt>$PLAY_HOME/play</tt> commmand directly. On my machine, though, it's just as easy to just type <tt>~/Downloads/play-1.2.4/play</tt> for this kind of demo.
+> There is no need to *install* Play as such, although you might want to add the download's directory to your <tt>PATH</tt>, so you can execute the <tt>$PLAY_HOME/play</tt> commmand directly. On my machine, though, it's just as easy to just type <tt>~/Downloads/play-1.2.4/play</tt> for this kind of demo.
 
 **Execute** <tt>play new tasks <br class="atl-forced-newline" />~ What is the application name? tasks</tt>
 
@@ -106,7 +106,7 @@ render(items);</pre></div>
 
 **Execute** <tt>play eclipsify tasks</tt> - Generate Eclipse project and class path configuration.
 
-**Eclipse** <em>File » Import… » Existing projects into workspace</em> - Show project structure.
+**Eclipse** *File » Import… » Existing projects into workspace* - Show project structure.
 
 **Eclipse** <tt>eclipse/tasks.launch</tt> » Run » tasks - Start the Play server runtime from within Eclipse.
 
