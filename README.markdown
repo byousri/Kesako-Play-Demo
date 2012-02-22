@@ -92,7 +92,7 @@ render(items);</pre></div>
 
 # Show message file content in the template
 
-**Edit** `app/views/Application/index.html` - Change the heading to `<h1>&amp;{'model.shipments'}</h1>`.
+**Edit** `app/views/Application/index.html` - Change the heading to `<h1>&{'model.shipments'}</h1>`.
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the message key being displayed, because the message is not defined.
 
@@ -240,7 +240,7 @@ render(items);</pre></div>
 
 > Now we get the field name, but not as a formatted label.
 
-**Edit** `conf/messages` - Change the placeholder in `validation.required` to `&amp;{%s`}, and add the line `task.name = Task name`
+**Edit** `conf/messages` - Change the placeholder in `validation.required` to `&{%s`}, and add the line `task.name = Task name`
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
 
