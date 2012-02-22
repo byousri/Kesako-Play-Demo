@@ -21,7 +21,7 @@
 
 **Execute** `play new tasks`
 
-    ~ What is the application name? tasks`
+    ~ What is the application name? tasks
 
 > A task list application is an easy example for people to understand, but it is more fun to pick an example that is more familiar and relevant to your audience, such as 'customers' or 'cocktails'.
 
