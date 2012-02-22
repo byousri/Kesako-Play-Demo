@@ -144,12 +144,11 @@ render(items);</pre></div>
 
 **Edit** `app/views/Application/index.html` - After the heading, add:
 
-<div class="code">
-<pre class="brush: html; gutter: false"><ul>
-#{list tasks, as:'task'}
-   <li>${task.title}</li>
-#{/list}
-</ul></pre></div>
+    <ul>
+    #{list tasks, as:'task'}
+       <li>${task.title}</li>
+    #{/list}
+    </ul>
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the JPA error.
 
