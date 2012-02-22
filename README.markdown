@@ -70,17 +70,17 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
     li a:after { content:'?'; color:#aaa; font-size:120%; font-weight:bold; }
     form * { font-size:120%; }
     input { width:16em; }
-    button { cursor:pointer; color: white; background-color: #3D6F04; background-image: -webkit-linear-gradient(top, #5AA706, #3D6F04); text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); border: 1px solid #CCC; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); border-radius:4px; }
+    button { cursor:pointer; color: white; background-color: #3D6F04; background-image: linear-gradient(top, #5AA706, #3D6F04); text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); border: 1px solid #CCC; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); border-radius:4px; }
     p.error { margin:0; color:#c00; }
 
 ## Show dynamic data in the template
 
-**Edit** `app/views/Application/index.html` - Change the heading to `<h1>${items}</h1>`.
+**Edit** `app/views/Application/index.html` - Change the heading to `<h1>${trucs}</h1>`.
 
 **Edit** `app/controllers/Application.java` - Change the `index()` method body to the following (omitting a semi-colon).
 
-    final String items = "Things"
-    render(items);
+    final String trucs = "Machins"
+    render(trucs);
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the Java compilation error.
 
@@ -88,20 +88,20 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new heading, and Java changes without compilation or deployment.
 
-**Edit** `app/controllers/Application.java` - Replace the `items` declaration line with a `String items` method parameter.
+**Edit** `app/controllers/Application.java` - Replace the `trucs` declaration line with a `String trucs` method parameter.
 
-**Open** [http://localhost:9000/?items=Things](http://localhost:9000/?items=Things)
+**Open** [http://localhost:9000/?trucs=Machins](http://localhost:9000/?trucs=Machins)
 
 **Edit** `app/controllers/Application.java` - Undo the last change - remove the parameter and put the declaration back.
 
 
 ## Show message file content in the template
 
-**Edit** `app/views/Application/index.html` - Change the heading to `<h1>&{'model.shipments'}</h1>`.
+**Edit** `app/views/Application/index.html` - Change the heading to `<h1>&{'kesako.titre'}</h1>`.
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the message key being displayed, because the message is not defined.
 
-**Edit** `conf/messages` - Add the line `model.shipments = Shipments`
+**Edit** `conf/messages` - Add the line `kesako.titre = Kesako`
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the message being displayed.
 
