@@ -61,17 +61,19 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
 
 **Edit** `public/stylesheets/main.css` - Add some CSS to make things less ugly:
 
-    html { border-top: 5px solid #67A927;  }
-    body { font-family:"Helvetica Neue"; padding:2em; background: #F7F7F7 url(/public/playmanual/logo.png) no-repeat 98% 20%; }
-    body:before { content:'Play kesako list demo'; color:#568C00; font-size:150%; text-transform:uppercase; letter-spacing:0.4em; }
-    ul { padding:0; list-style:none; }
-    li, form { width:30em; background:white; padding:1em; border:1px solid #ccc; border-radius:0.5em; margin:1em 0; position:relative; }
-    li a { text-decoration:none; color:transparent; position:absolute; top:1em; right:1em; }
-    li a:after { content:'?'; color:#aaa; font-size:120%; font-weight:bold; }
-    form * { font-size:120%; }
-    input { width:16em; }
-    button { cursor:pointer; color: white; background-color: #3D6F04; background-image: linear-gradient(top, #5AA706, #3D6F04); text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); border: 1px solid #CCC; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); border-radius:4px; }
-    p.error { margin:0; color:#c00; }
+```css
+html { border-top: 5px solid #67A927;  }
+body { font-family:"Helvetica Neue"; padding:2em; background: #F7F7F7 url(/public/playmanual/logo.png) no-repeat 98% 20%; }
+body:before { content:'Play kesako list demo'; color:#568C00; font-size:150%; text-transform:uppercase; letter-spacing:0.4em; }
+ul { padding:0; list-style:none; }
+li, form { width:30em; background:white; padding:1em; border:1px solid #ccc; border-radius:0.5em; margin:1em 0; position:relative; }
+li a { text-decoration:none; color:transparent; position:absolute; top:1em; right:1em; }
+li a:after { content:'?'; color:#aaa; font-size:120%; font-weight:bold; }
+form * { font-size:120%; }
+input { width:16em; }
+button { cursor:pointer; color: white; background-color: #3D6F04; background-image: linear-gradient(top, #5AA706, #3D6F04); text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); border: 1px solid #CCC; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); border-radius:4px; }
+p.error { margin:0; color:#c00; }
+```
 
 ## Show dynamic data in the template
 
@@ -79,8 +81,10 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
 
 **Edit** `app/controllers/Application.java` - Change the `index()` method body to the following (omitting a semi-colon).
 
-    final String trucs = "Machins"
-    render(trucs);
+```java
+final String trucs = "Machins"
+render(trucs);
+```
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the Java compilation error.
 
@@ -134,11 +138,13 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
 
 **Edit** `app/models` - create class:
 
-    @Entity
-    public class Kesako extends play.db.jpa.Model {
-    
-       public String nom;
-    }
+```java
+@Entity
+public class Kesako extends play.db.jpa.Model {
+
+   public String nom;
+}
+```
 
 > At this point you may need to explain that `Kesako` is a Java Bean at run-time, because Play dynamically adds getter and setter methods for the public fields, turning them into normal Java Bean properties.
 
@@ -151,11 +157,13 @@ render(kesakos);
 
 **Edit** `app/views/Application/index.html` - After the heading, add:
 
-    <ul>
-    #{list kesakos, as:'kesako'}
-       <li>${kesako.nom}</li>
-    #{/list}
-    </ul>
+```html
+<ul>
+#{list kesakos, as:'kesako'}
+   <li>${kesako.nom}</li>
+#{/list}
+</ul>
+```
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the JPA error.
 
@@ -168,20 +176,24 @@ render(kesakos);
 
 **Edit** `app/views/Application/index.html` - After the list, add:
 
-    #{form @add()}
-    <p>
-      <input name="kesako.nom" autofocus>
-    
-      <button type="submit">Add Kesako</button>
-    </p>
-    #{/form}
+```html
+#{form @add()}
+<p>
+  <input name="kesako.nom" autofocus>
+
+  <button type="submit">Add Kesako</button>
+</p>
+#{/form}
+```
 
 **Edit** `app/controllers/Application.java` - Add the method:
 
-    public static void add(final Kesako kesako) {
-       kesako.save();
-       index();
-    }
+```java
+public static void add(final Kesako kesako) {
+   kesako.save();
+   index();
+}
+```
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Add kesakos.
 
@@ -189,7 +201,9 @@ render(kesakos);
 
 **Edit** `app/views/Application/index.html` - Inside the `<li>` add a link:
 
-    <a href="@{delete(kesako.id)}">delete</a>
+```html
+<a href="@{delete(kesako.id)}">delete</a>
+```
 
 > As for forms, there is also a tag for generating links; this way just generates the URL.
 
@@ -197,11 +211,13 @@ render(kesakos);
 
 **Edit** `app/controllers/Application.java` - Add the method, noting the `id` parameter:
 
-    public static void delete(final Long id) {
-       Kesako kesako = Kesako.findById(id);
-       kesako.delete();
-       index();
-    }
+```java
+public static void delete(final Long id) {
+   Kesako kesako = Kesako.findById(id);
+   kesako.delete();
+   index();
+}
+```
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Delete kesakos - show the link URL and query string parameter.
 
@@ -213,7 +229,9 @@ render(kesakos);
 
 **Edit** `app/views/Application/index.html` - Change the heading to:
 
-    <h1>${kesakos.size()} Kesako${kesakos.pluralize()}</h1>
+```html
+<h1>${kesakos.size()} Kesako${kesakos.pluralize()}</h1>
+```
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Add/delete kesakos to show singular and plural forms.
 
@@ -223,19 +241,21 @@ render(kesakos);
 
 **Edit** `app/controllers/Application.java` - Add the `@Valid` annotation to the add method's `Shipment` parameter, replace the first line of the method body (`Kesako.save();`) with the following.
 
-    if (validation.hasErrors()) {
-       validation.keep();
-    }
-    else {
-       kesako.save();			
-    }
+```java
+if (validation.hasErrors()) {
+   validation.keep();
+} else {
+   kesako.save();			
+}
+```
 
 **Edit** `app/views/Application/index.html` - immediately after the `form` tag, add:
 
-    #{errors}
-        <p class="error">${error}</p>
-    
-    #{/errors}
+```html
+#{errors}
+	<p class="error">${error}</p>
+#{/errors}
+```
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the validation error when submitting an empty name.
 
@@ -255,13 +275,17 @@ render(kesakos);
 
 **Edit** `app/views/Application/index.html` - Replace the errors tag with:
 
-    #{ifErrors}
-        <p class="error">Validation failed</p>
-    #{/ifErrors}</pre></div>
+```html
+#{ifErrors}
+	<p class="error">Validation failed</p>
+#{/ifErrors}</pre></div>
+```
 
 ... and after the text input and button, before the closing `form` tag, add:
 
-    <p class="error">#{error 'kesako.nom'/}</p>
+```html
+<p class="error">#{error 'kesako.nom'/}</p>
+```
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
 
