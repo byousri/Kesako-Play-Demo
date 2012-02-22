@@ -138,7 +138,7 @@ render(items);</pre></div>
     @Entity
     public class Kesako extends play.db.jpa.Model {
     
-       public String title;
+       public String nom;
     }
 
 > At this point you may need to explain that `Kesako` is a Java Bean at run-time, because Play dynamically adds getter and setter methods for the public fields, turning them into normal Java Bean properties.
@@ -152,7 +152,7 @@ render(items);</pre></div>
 
     <ul>
     #{list kesakos, as:'kesako'}
-       <li>${kesako.title}</li>
+       <li>${kesako.nom}</li>
     #{/list}
     </ul>
 
@@ -169,7 +169,7 @@ render(items);</pre></div>
 
     #{form @add()}
     <p>
-      <input name="kesako.title" autofocus>
+      <input name="kesako.nom" autofocus>
     
       <button type="submit">Add Kesako</button>
     </p>
@@ -260,7 +260,7 @@ render(items);</pre></div>
 
 ... and after the text input and button, before the closing `form` tag, add:
 
-    <p class="error">#{error 'kesako.title'/}</p>
+    <p class="error">#{error 'kesako.nom'/}</p>
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
 
