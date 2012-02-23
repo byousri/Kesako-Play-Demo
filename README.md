@@ -140,7 +140,9 @@ render(trucs);
 **Edit** `app/models` - create class:
 
 ```java
-@Entity
+package models;
+
+@javax.persistence.Entity
 public class Kesako extends play.db.jpa.Model {
 
    public String nom;
@@ -240,13 +242,15 @@ public static void delete(final Long id) {
 
 ## Form validation
 
-**Edit** `app/controllers/Application.java` - Add the `@Valid` annotation to the add method's `Shipment` parameter, replace the first line of the method body (`Kesako.save();`) with the following.
+**Edit** `app/controllers/Application.java` - Replace the first line of the method body (`Kesako.save();`) with the following.
 
 ```java
+validation.required("nom", kesako.nom);
+
 if (validation.hasErrors()) {
-   validation.keep();
+	validation.keep();
 } else {
-   kesako.save();			
+	kesako.save();           
 }
 ```
 
@@ -262,13 +266,13 @@ if (validation.hasErrors()) {
 
 > The validation error is just 'Required', but we can change this.
 
-**Edit** `conf/messages` - Add the line `validation.required = %s is a required field`
+**Edit** `conf/messages` - Add the line `validation.required = "%s" est un champ obligatoire`
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
 
 > Now we get the field name, but not as a formatted label.
 
-**Edit** `conf/messages` - Change the placeholder in `validation.required` to `&{%s}`, and add the line `kesako.name = Kesako name`
+**Edit** `conf/messages` - Change the placeholder in `validation.required` to `&{%s}`, and add the line `nom = Le nom du Kesako`
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
 
@@ -278,14 +282,14 @@ if (validation.hasErrors()) {
 
 ```html
 #{ifErrors}
-	<p class="error">Validation failed</p>
-#{/ifErrors}</pre></div>
+	<p class="error">Echec de la validation</p>
+#{/ifErrors}
 ```
 
 ... and after the text input and button, before the closing `form` tag, add:
 
 ```html
-<p class="error">#{error 'kesako.nom'/}</p>
+<p class="error">#{error 'nom'/}</p>
 ```
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
