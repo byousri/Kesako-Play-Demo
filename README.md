@@ -63,16 +63,41 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
 **Edit** `public/stylesheets/main.css` - Add some CSS to make things less ugly:
 
 ```css
-html { border-top: 5px solid #67A927;  }
-body { font-family:"Helvetica Neue"; padding:2em; background: #F7F7F7 url(/public/playmanual/logo.png) no-repeat 98% 20%; }
-body:before { content:'Play kesako list demo'; color:#568C00; font-size:150%; text-transform:uppercase; letter-spacing:0.4em; }
+html { }
+body {
+	color: black;
+    font-family: Arial,Verdana,Helvetica,sans-serif;
+	padding:2em;
+	background: url(http://www.sqli.com/design/fre/images/body-home-03.jpg) repeat scroll 0 0 #000000;
+}
+body:before { content:'Play - Demo Kesako'; color:black; font-size:150%; text-transform:uppercase; letter-spacing:0.4em; }
 ul { padding:0; list-style:none; }
 li, form { width:30em; background:white; padding:1em; border:1px solid #ccc; border-radius:0.5em; margin:1em 0; position:relative; }
-li a { text-decoration:none; color:transparent; position:absolute; top:1em; right:1em; }
-li a:after { content:'?'; color:#aaa; font-size:120%; font-weight:bold; }
-form * { font-size:120%; }
+li a {
+	text-decoration:none; 
+	color:transparent; 
+	position:absolute; 
+	top:1em; 
+	right:1em;
+}
+li a:after { 
+	content: url(http://icons.iconarchive.com/icons/custom-icon-design/office/16/delete-icon.png); 
+	color:#aaa; 
+	font-size:120%; 
+	font-weight:bold; 
+}
+form * { font-size:110%; }
 input { width:16em; }
-button { cursor:pointer; color: white; background-color: #3D6F04; background-image: linear-gradient(top, #5AA706, #3D6F04); text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); border: 1px solid #CCC; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); border-radius:4px; }
+button {
+	cursor:pointer; 
+	color: white; 
+	background-color: #DA0E1B; 
+	background-image: linear-gradient(top, #5AA706, #3D6F04); 
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); 
+	border: 1px solid #CCC; 
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); 
+	border-radius: 4px; 
+}
 p.error { margin:0; color:#c00; }
 ```
 
