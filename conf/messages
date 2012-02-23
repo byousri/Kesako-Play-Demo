@@ -1,3 +1,7 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+
+kesako.titre = Kesako
+validation.required = &{%s} est un champ obligatoire
+nom = Le nom du Kesako

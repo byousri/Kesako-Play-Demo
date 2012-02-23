@@ -1,4 +1,21 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<h1>Kesakos</h1>
+<h1>${kesakos.size()} Kesako${kesakos.pluralize()}</h1>
+
+<ul>
+#{list kesakos, as:'kesako'}
+   <li>${kesako.nom} <a href="@{delete(kesako.id)}">delete</a></li>
+#{/list}
+</ul>
+
+#{form @add()}
+#{ifErrors}
+	<p class="error">Echec de la validation</p>
+#{/ifErrors}
+<p>
+  <input name="kesako.nom" autofocus>
+  <button type="submit">Add Kesako</button>
+  <p class="error">#{error 'nom'/}</span>
+</p>
+#{/form}
