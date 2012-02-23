@@ -4,7 +4,7 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
 
 ## Summary
 1. Download the Play framework.
-2. Create and run the application.
+2. Create, run the application and push it to Github.
 3. Inspect the set-up for the default welcome page.
 4. Replace the welcome page with a trivial dynamic template.
 5. Generate a Java compilation error.
@@ -101,6 +101,16 @@ button {
 p.error { margin:0; color:#c00; }
 ```
 
+** Execute **
+
+    git init
+    git add .
+    git commit -m 'first commit'
+    git remote add origin git@github.com:dlecan/kesakos.git
+    git push -u origin master
+
+** Setup Cloudbees Jenkins Job **
+	
 ## Show dynamic data in the template
 
 **Edit** `app/views/Application/index.html` - Change the heading to `<h1>${trucs}</h1>`.
