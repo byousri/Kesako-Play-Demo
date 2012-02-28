@@ -353,15 +353,20 @@ public class KesakoTest extends UnitTest {
 ```
 
 **Run** JUnit Test with IDE - Test Failed
+
 **Execute** `play test kesakos` - Start the Play server runtime in test mode.
 **Open** [http://localhost:9000/@tests](http://localhost:9000/@tests) - Start a Play Test Runner page
+
 **Select and Start** test `models/KesakoTest` - Test failed
+
 **Execute**
 
     git add .
     git commit -m 'Failed unit test'
     git push -u origin master
+    
 **See a Jenkins Job** - No Deployment
+
 **Edit** `test/data.yml` - Add some datas
 
 ```yml
@@ -399,7 +404,9 @@ public class KesakoTest extends UnitTest {
 ```
 
 **Open** [http://localhost:9000/@tests](http://localhost:9000/@tests) - Start a Play Test Runner page
+
 **Select and Start** test `models/KesakoTest` - Test success
+
 **Create** file `test/AddKesako.test.html`
 
 ```html
@@ -413,8 +420,11 @@ public class KesakoTest extends UnitTest {
 ```
 
 **Open** [http://localhost:9000/@tests](http://localhost:9000/@tests) - Start a Play Test Runner page
+
 **Select and Start** test `AddKesako` - Test failed (JJJJJ not found)
+
 **Open** [http://localhost:9000/](http://localhost:9000/) - Kesako 'Java vs Scala' was added
+
 **Edit** file `test/AddKesako.test.html`
 
 ```html
@@ -424,6 +434,7 @@ public class KesakoTest extends UnitTest {
 ```
 
 **Open** [http://localhost:9000/@tests](http://localhost:9000/@tests) - Start a Play Test Runner page
+
 **Select and Start** test `AddKesako` - Test success
 
 ## CRUD (TODO)
