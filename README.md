@@ -331,6 +331,7 @@ if (validation.hasErrors()) {
 
 ## Testing
 **Create** class `test/models/KesakoTest`
+
 ```java
 package models;
 
@@ -350,6 +351,7 @@ public class KesakoTest extends UnitTest {
 
 }
 ```
+
 **Run** JUnit Test with IDE - Test Failed
 **Execute** `play test kesakos` - Start the Play server runtime in test mode.
 **Open** [http://localhost:9000/@tests](http://localhost:9000/@tests) - Start a Play Test Runner page
@@ -361,6 +363,7 @@ public class KesakoTest extends UnitTest {
     git push -u origin master
 **See a Jenkins Job** - No Deployment
 **Edit** `test/data.yml` - Add some datas
+
 ```yml
 # Test data
 
@@ -371,7 +374,9 @@ Kesako(java):
 Kesako(scala):
     nom:          Scala is beautiful too
 ```
+
 **Edit** class `test/models/KesakoTest`
+
 ```java
 package models;
 import java.util.List;
@@ -392,9 +397,11 @@ public class KesakoTest extends UnitTest {
 	}
 }
 ```
+
 **Open** [http://localhost:9000/@tests](http://localhost:9000/@tests) - Start a Play Test Runner page
 **Select and Start** test `models/KesakoTest` - Test success
 **Create** file `test/AddKesako.test.html`
+
 ```html
 #{selenium}
     // Open the home page, and check that no error occured
@@ -404,15 +411,18 @@ public class KesakoTest extends UnitTest {
 	verifyTextPresent('JJJJJ')
 #{/selenium}
 ```
+
 **Open** [http://localhost:9000/@tests](http://localhost:9000/@tests) - Start a Play Test Runner page
 **Select and Start** test `AddKesako` - Test failed (JJJJJ not found)
 **Open** [http://localhost:9000/](http://localhost:9000/) - Kesako 'Java vs Scala' was added
 **Edit** file `test/AddKesako.test.html`
+
 ```html
     type('kesako.nom','Java vs Scala 2')
     clickAndWait('submit')
 	verifyTextPresent('Java vs Scala 2')
 ```
+
 **Open** [http://localhost:9000/@tests](http://localhost:9000/@tests) - Start a Play Test Runner page
 **Select and Start** test `AddKesako` - Test success
 
