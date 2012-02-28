@@ -219,7 +219,7 @@ render(kesakos);
 <p>
   <input name="kesako.nom" autofocus>
 
-  <button type="submit">Add Kesako</button>
+  <button name="submit" type="submit">Add Kesako</button>
 </p>
 #{/form}
 ```
@@ -329,6 +329,92 @@ if (validation.hasErrors()) {
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
 
-## Testing (TODO)
+## Testing
+**Create** class `test/models/KesakoTest`
+```java
+package models;
+
+import java.util.List;
+
+import org.junit.Test;
+
+import play.test.UnitTest;
+
+public class KesakoTest extends UnitTest {
+	
+	@Test
+	public void testFindAll(){
+		List<Kesako> kesakoList = Kesako.findAll();
+		assertEquals(2, kesakoList.size());
+	}
+
+}
+```
+**Run** JUnit Test with IDE - Test Failed
+**Execute** `play test kesakos` - Start the Play server runtime in test mode.
+**Open** [http://localhost:9000/@tests](http://localhost:9000/@tests) - Start a Play Test Runner page
+**Select and Start** test `models/KesakoTest` - Test failed
+**Execute**
+
+    git add .
+    git commit -m 'Failed unit test'
+    git remote add origin git@github.com:dlecan/kesakos.git
+    git push -u origin master
+**See a Jenkins Job** - No Deployment
+**Edit** `test/data.yml` - Add some datas
+```yml
+# Test data
+
+Kesako(bob):
+    nom:          Java is beautiful
+
+    
+Kesako(jeff):
+    nom:          Scala is beautiful too
+```
+**Edit** class `test/models/KesakoTest`
+```java
+package models;
+import java.util.List;
+import org.junit.Before;
+import org.junit.Test;
+import play.test.Fixtures;
+import play.test.UnitTest;
+public class KesakoTest extends UnitTest {
+	@Before
+	public void setUp(){
+		Fixtures.deleteAllModels();
+		Fixtures.loadModels("data.yml");
+	}
+	@Test
+	public void testFindAll(){
+		List<Kesako> kesakoList = Kesako.findAll();
+		assertEquals(2, kesakoList.size());
+	}
+}
+```
+**Open** [http://localhost:9000/@tests](http://localhost:9000/@tests) - Start a Play Test Runner page
+**Select and Start** test `models/KesakoTest` - Test success
+**Create** file `test/AddKesako.test.html`
+```html
+#{selenium}
+    // Open the home page, and check that no error occured
+    open('/')
+    type('kesako.nom','Java vs Scala')
+    clickAndWait('submit')
+	verifyTextPresent('JJJJJ')
+#{/selenium}
+```
+**Open** [http://localhost:9000/@tests](http://localhost:9000/@tests) - Start a Play Test Runner page
+**Select and Start** test `AddKesako` - Test failed (JJJJJ not found)
+**Open** [http://localhost:9000/](http://localhost:9000/) - Kesako 'Java vs Scala' was added
+**Edit** file `test/AddKesako.test.html`
+```html
+    type('kesako.nom','Java vs Scala 2')
+    clickAndWait('submit')
+	verifyTextPresent('Java vs Scala 2')
+```
+**Open** [http://localhost:9000/@tests](http://localhost:9000/@tests) - Start a Play Test Runner page
+**Select and Start** test `AddKesako` - Test success
 
 ## CRUD (TODO)
