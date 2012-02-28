@@ -355,6 +355,7 @@ public class KesakoTest extends UnitTest {
 **Run** JUnit Test with IDE - Test Failed
 
 **Execute** `play test kesakos` - Start the Play server runtime in test mode.
+
 **Open** [http://localhost:9000/@tests](http://localhost:9000/@tests) - Start a Play Test Runner page
 
 **Select and Start** test `models/KesakoTest` - Test failed
