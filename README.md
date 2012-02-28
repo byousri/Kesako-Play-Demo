@@ -365,11 +365,11 @@ public class KesakoTest extends UnitTest {
 ```yml
 # Test data
 
-Kesako(bob):
+Kesako(java):
     nom:          Java is beautiful
 
     
-Kesako(jeff):
+Kesako(scala):
     nom:          Scala is beautiful too
 ```
 **Edit** class `test/models/KesakoTest`
