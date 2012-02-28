@@ -358,7 +358,6 @@ public class KesakoTest extends UnitTest {
 
     git add .
     git commit -m 'Failed unit test'
-    git remote add origin git@github.com:dlecan/kesakos.git
     git push -u origin master
 **See a Jenkins Job** - No Deployment
 **Edit** `test/data.yml` - Add some datas
