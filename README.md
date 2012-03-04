@@ -16,8 +16,8 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
 11. Add a link for deleting each instance.
 12. Use a Java extensions in the view template.
 13. Add form validation.
-14. Testing (TODO)
-15. CRUD (TODO)
+14. Testing 
+15. CRUD 
 
 ## Create and run the application
 
