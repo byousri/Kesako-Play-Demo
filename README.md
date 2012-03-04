@@ -439,15 +439,17 @@ public class KesakoTest extends UnitTest {
 **Select and Start** test `AddKesako` - Test success
 
 ## CRUD 
-**activer le module CRUD**\
+**activer le module CRUD**
+
 /conf/application.conf file décommenter la ligne : 
 module.crud=${play.path}/modules/crud
 
-**regénérer la conf Eclipse du projet**\
+**regénérer la conf Eclipse du projet**
 play eclipsify kesako
 
-**Créer une classe persistante Collab**\
-```java
+**Créer une classe persistante Collab**
+
+```
 package models;
 
 import javax.persistence.Entity;
@@ -484,7 +486,8 @@ public class Collab extends Model {
 ```
 
 **Modifier la classe Kesako pour ajouter un lien Kesako => collab**
-```java
+
+```
 package models;
 
 import java.util.Date;
@@ -518,7 +521,7 @@ public class Kesako extends Model {
 }
 ```
 **Créer les classes de controller pour les objets persistants**
-```java
+```
 package controllers;
 
 import models.Kesako;
@@ -529,7 +532,7 @@ public class ControlleurCrudKesako extends CRUD {
 }
 ```
 
-```java
+```
 package controllers;
 
 import models.Collab;
@@ -540,12 +543,12 @@ public class ControlleurCrudCollab extends CRUD {
 }
 ```
 ** faire afficher les routes de l'application**
-http://localhost:9000/toto
+[http://localhost:9000/toto](http://localhost:9000/toto)
 
 
 
 **Accéder à l'acran de gestion des entités**
-http://localhost:9000/crud/
+[http://localhost:9000/crud/](http://localhost:9000/crud/)
 montrer les routes créées par le module CRUD
 
 **installer une route pour le module CRUD**
@@ -555,14 +558,14 @@ ajouter dans le fichier routes :
 ```
 
 **Accéder à la racine du module CRUD**
-http://localhost:9000/crud
+[http://localhost:9000/crud](http://localhost:9000/crud)
 
 **Customiser les écrans**
 C:\play\demo_kesako\kesako>play crud:ov --template Collab/list
 ouvrir views/ControlleurCrudCollab/list.html
 
 modifier l'affichage de la table : 
-```html
+```
     <div id="crudListTable">
         #{crud.table fields:['matricule', 'nom', 'prenom', 'email'] /}
     </div>
@@ -572,14 +575,17 @@ enlever le footer
 
 **aller plus loin avec le module**
 * créer physiquemenet les vues
+* 
 ```
 play crud:ov --template ControlleurCrudKesako/list
 play crud:ov --template ControlleurCrudKesako/show
 play crud:ov --template ControlleurCrudCollab/show
 ```
+
 * Modifier les CRUD pour avoir des infos en plus dnas les pages : 
 faire hériter les Controlleurs de CrudKesako
-```java
+
+```
 package controllers;
 
 import play.db.Model;
@@ -609,7 +615,9 @@ public abstract class CrudKesako extends CRUD {
 	}
 }
 ```
-* dans Messages : 
+
+** dans Messages : **
+
 ```
 crud.descriptionIndex.Collab = Liste des collabs
 crud.titlename1.Collab = Collabs
@@ -621,358 +629,189 @@ crud.description2.Kesako = Kesako
 ```
 
 * modifier la CSS : crud.css
-```css
-/** Administration area **/
+* 
+```
 body:before { content:'Play - Demo Kesako'; color:black; font-size:150%; text-transform:uppercase; letter-spacing:0.4em; }
 #crud {
-    color: black;
-    font-family: Arial,Verdana,Helvetica,sans-serif;
-    background: url(http://www.sqli.com/design/fre/images/body-home-03.jpg) repeat scroll 0 0 #000000;
-    width: 80%;
+    color: black; font-family: Arial,Verdana,Helvetica,sans-serif; background: url(http://www.sqli.com/design/fre/images/body-home-03.jpg) repeat scroll 0 0 #000000; width: 80%;
 }
-
-/** Header **/
-
 #crud #crudHeader {
-	background: #404040;
-	padding: 10px 20px;
+	background: #404040; padding: 10px 20px;
 }
-
 #crud #crudHeader h1 {
-	margin: 0;
-	font-size:150%; 
-	text-transform:uppercase; 
-	letter-spacing:0.4em;
+	margin: 0; font-size:150%; text-transform:uppercase;  letter-spacing:0.4em;
 }
-
 #crud #crudHeader h1 a {
-	color: white;
-	text-decoration: none;
+	color: white; text-decoration: none;
 }
-
-/** Breadcrumb **/
-
 #crudBreadcrumb {
-	padding: 5px 20px;
-	font-size: 80%;
-	border-bottom: 1px solid #ddd;
+	padding: 5px 20px; font-size: 80%; border-bottom: 1px solid #ddd; 
 }
-
 #crudBreadcrumb ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+	margin: 0; padding: 0; list-style: none;
 }
-
 #crudBreadcrumb li {
 	display: inline;
 }
-
 #crudBreadcrumb a {
 	color: #333;
 }
-
 #crudBreadcrumb li:last-child a {
-	color: #888;
-	text-decoration: none;
+	color: #888; text-decoration: none;
 }
-
-/** Flash message **/
-
 .crudFlash {
-	padding: 5px 20px;
-	border-bottom: 1px solid #ddd;
-	color: #fff;
+	padding: 5px 20px; border-bottom: 1px solid #ddd; color: #fff;
 }
-
 .flashError {
 	background: #c00;
 }
-
 .flashSuccess {
 	background: #54BD06;
 }
-
-/** Content **/
-
 #crud #crudContent {
 	padding: 10px 20px;
 }
-
 #crud #crudContent h2 {
 	color: #333;
 	font-weight: normal;
 	margin-top: 10px;
 }
-
 #crud #crudContent a {
 	color: #444;
 }
-
-/** Tables **/
-
 #crud #crudContent table {
-	width: 100%;
-	border: 1px solid #ddd;
-	border-top: none;
-	border-collapse: collapse;
-	table-layout: fixed;
+	width: 100%; border: 1px solid #ddd; border-top: none; border-collapse: collapse; table-layout: fixed; 
 }
-
 #crud #crudContent table {
 }
-
 #crud #crudContent table thead tr {
 	background: #808080;
 }
-
 #crud #crudContent table th {
-	color: #fff;
-	font-weight: bold;
+	color: #fff; font-weight: bold;
 }
-
 #crud #crudContent table th a {
-	color: #fff;
-	font-weight: bold;
+	color: #fff; font-weight: bold;
 }
-
 #crud #crudContent table th {
-	text-align: left;
-	padding: 6px 5px;
+	text-align: left; padding: 6px 5px;
 }
-
 #crud #crudContent table td {
-	text-align: left;
-	padding: 4px 5px;
+	text-align: left; padding: 4px 5px;
 }
-
 #crud #crudContent table td {
 	border-bottom: 1px solid #eee;
 }
-
 #crud #crudContent table tr.even {
 	background: #f9f9f9;
 }
-
 #crud #crudContent table tr:last-child td {
 	border-bottom: 1px solid #ddd;
 }
-
 .crudSortedAsc:after {
-	content: 'â–¼';
+	content: '▼';
 }
-
 .crudSortedDesc:after {
-	content: 'â–²';
+	content: '▲';
 }
-
-/** Forms **/
-
 form {
 	margin: 0;
 }
-
 input, textarea, select {
-	font-family: 'Helvetica', 'Arial', 'Sans';
-	font-size: 12px;
+	font-family: 'Helvetica', 'Arial', 'Sans'; font-size: 12px;
 }
-
 textarea {
 	padding: 2px;
 }
-
 .objectForm {
 	border: 1px solid #ddd;
 }
-
 label {
-	display: block;
-	font-weight: bold;
-	width: 20%;
-	float: left;
-	color: #666;
-	cursor: pointer;
+	display: block; font-weight: bold; width: 20%; float: left; color: #666; cursor: pointer; 
 }
-
 .crudField {
-	padding: 10px;
-	border-bottom: 1px solid #eee;
-	position: relative;
+	padding: 10px; border-bottom: 1px solid #eee; position: relative;
 }
-
 .crud_hidden {
     display: none;
 }
-
 .crudButtons {
-	background: #efefef;
-	text-align: right;
-	margin: 0;
-	padding: 10px;
+	background: #efefef; text-align: right; margin: 0; padding: 10px;
 }
-
 .crudField .error {
-	color: #c00;
-	padding-left: 10px;
-	position: absolute;
-	top: 15px;
-	font-size: 80%;
+	color: #c00; padding-left: 10px; position: absolute; top: 15px; font-size: 80%;
 }
-
 .crudField .hasError {
 	color: #c00;
 }
-
 .crudField select[multiple] {
 	max-height: 100px;
 }
-
 .crudField .crudHelp {
-	font-size: 70%;
-	color: #888;
-	display: block;
-	margin-left: 20%;
-	margin-top: 5px;
+	font-size: 70%; color: #888; display: block; margin-left: 20%; margin-top: 5px;
 }
-
 form .currentAttachment {
-	display: block;
-	font-size: 80%;
-	margin-left: 20%;
-	padding-top: 4px;
+	display: block; font-size: 80%; margin-left: 20%; padding-top: 4px;
 }
-
 form .removeAttachment {
-    display: block;
-    font-size: 80%;
-    margin-left: 20%;
+    display: block; font-size: 80%; margin-left: 20%;
 }
-
-/** Footer **/
-
 #crud #crudFooter {
-	font-size: 80%;
-	color: #aaa;
-	padding: 10px 20px;
-	border-top: 1px dashed #ccc;
-	border-bottom: 1px dashed #ccc;
-	margin-top: 20px;
+	font-size: 80%; color: #aaa; padding: 10px 20px; border-top: 1px dashed #ccc; border-bottom: 1px dashed #ccc; margin-top: 20px;
 }
-
 #crud #crudFooter a {
 	color: #333;
 }
-
-/** Home **/
-
 .crudNew {
 	text-align: right !important;
 }
-
 .crudNew a {
-	text-decoration:none; 
-    color:transparent; 
-    position:absolute; 
-    top:1em; 
-    right:1em;
+	text-decoration:none; color:transparent;  position:absolute;  top:1em;  right:1em;
 }
 .crudNew a:after {
-	content: url(http://icons.iconarchive.com/icons/deleket/soft-scraps/16/Button-Add-icon.png); 
-    color:#aaa; 
-    font-size:120%; 
-    font-weight:bold; 
+	content: url(http://icons.iconarchive.com/icons/deleket/soft-scraps/16/Button-Add-icon.png); color:#aaa;  font-size:120%;  font-weight:bold;  
 }
 .crudNew a:hover {
 	opacity: .8;
 }
-
-/** List **/
-
 #crudList {
 	position: relative;
 }
-
 #crudListAdd a {
-	margin: 0;
-	position: absolute;
-	top: 0;
-	right: 0;
-	background: #DA0E1B;
-	padding: 3px 10px;
-	font-size: 90%;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	color: #fff !important;
-	text-decoration: none;
-	content: url(http://icons.iconarchive.com/icons/deleket/soft-scraps/16/Button-Add-icon.png); 
-    color:#aaa; 
-    font-size:120%; 
-    font-weight:bold; 
+	margin: 0; position: absolute; top: 0; right: 0; background: #DA0E1B; padding: 3px 10px; font-size: 90%; -moz-border-radius: 8px; -webkit-border-radius: 8px; color: #fff !important; text-decoration: none;
+	content: url(http://icons.iconarchive.com/icons/deleket/soft-scraps/16/Button-Add-icon.png);  color:#aaa;  font-size:120%;  font-weight:bold;  
 }
-
 #crudListAdd a:hover {
 	opacity: .8;
 }
-
 #crudListSearch {
-	padding: 4px 5px;
-	border: 1px solid #ddd;
-	background: #efefef;
+	padding: 4px 5px; border: 1px solid #ddd; background: #efefef;
 }
-
 #crudListSearch input[type=text] {
 	width: 40%;
 }
-
 #crudListSearch a {
-	color: #111 !important;
-	font-size: 90%;
+	color: #111 !important; font-size: 90%;
 }
-
 #crudListPagination {
-	padding: 4px 5px;
-	border: 1px solid #ddd;
-	background: #efefef;
-	border-top: 0;
-	font-size: 90%;
-	position: relative;
+	padding: 4px 5px; border: 1px solid #ddd; background: #efefef; border-top: 0; font-size: 90%; position: relative;
 }
-
 #crudListPagination .crudCount {
 	margin: 0;
 }
-
 #crudListPagination .crudPages {
-	margin: 0;
-	position: absolute;
-	right: 5px;
-	top: 4px;
+	margin: 0; position: absolute; right: 5px; top: 4px;
 }
-
-/** Show **/
-
 #crudShow {
 	position: relative;
 }
-
 .crudDelete input {
-	color: #fff;
-	border: none;
-	margin: 0;
-	position: absolute;
-	top: 0;
-	right: 0;
-	background: #c00;
-	padding: 2px 10px;
-	font-size: 90%;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	cursor: pointer;
+	color: #fff; border: none; margin: 0; position: absolute; top: 0; right: 0; background: #c00; padding: 2px 10px; font-size: 90%; -moz-border-radius: 8px; -webkit-border-radius: 8px; cursor: pointer;
 }
-
 .crudDelete input:hover {
 	opacity: .7;
 }
+
 ```
 
 * modifier le format d'affichage des dates dans la table (table.html)
