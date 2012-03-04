@@ -521,6 +521,7 @@ public class Kesako extends Model {
 }
 ```
 **Créer les classes de controller pour les objets persistants**
+
 ```
 package controllers;
 
@@ -542,40 +543,53 @@ public class ControlleurCrudCollab extends CRUD {
 
 }
 ```
+
 ** faire afficher les routes de l'application**
+
 [http://localhost:9000/toto](http://localhost:9000/toto)
 
 
 
 **Accéder à l'acran de gestion des entités**
+
 [http://localhost:9000/crud/](http://localhost:9000/crud/)
 montrer les routes créées par le module CRUD
 
 **installer une route pour le module CRUD**
+
 ajouter dans le fichier routes : 
 ```
 *      /crud              	module:crud
 ```
 
 **Accéder à la racine du module CRUD**
+
 [http://localhost:9000/crud](http://localhost:9000/crud)
 
 **Customiser les écrans**
+
+```
 C:\play\demo_kesako\kesako>play crud:ov --template Collab/list
+```
+
 ouvrir views/ControlleurCrudCollab/list.html
 
 modifier l'affichage de la table : 
+
 ```
     <div id="crudListTable">
+    
         #{crud.table fields:['matricule', 'nom', 'prenom', 'email'] /}
+        
     </div>
 ```
+
 dans layout.html
 enlever le footer
 
 **aller plus loin avec le module**
 * créer physiquemenet les vues
-* 
+
 ```
 play crud:ov --template ControlleurCrudKesako/list
 play crud:ov --template ControlleurCrudKesako/show
@@ -616,7 +630,9 @@ public abstract class CrudKesako extends CRUD {
 }
 ```
 
+
 ** dans Messages : **
+
 
 ```
 crud.descriptionIndex.Collab = Liste des collabs
@@ -629,7 +645,7 @@ crud.description2.Kesako = Kesako
 ```
 
 * modifier la CSS : crud.css
-* 
+
 ```
 body:before { content:'Play - Demo Kesako'; color:black; font-size:150%; text-transform:uppercase; letter-spacing:0.4em; }
 #crud {
