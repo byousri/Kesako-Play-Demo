@@ -439,15 +439,15 @@ public class KesakoTest extends UnitTest {
 **Select and Start** test `AddKesako` - Test success
 
 ## CRUD 
-**activer le module CRUD**
+**activer le module CRUD**\
 /conf/application.conf file décommenter la ligne : 
-# The crud module
 module.crud=${play.path}/modules/crud
 
-**regénérer la conf Eclipse du projet**
+**regénérer la conf Eclipse du projet**\
 play eclipsify kesako
 
-**Créer une classe de persistante Collab**
+**Créer une classe persistante Collab**\
+```java
 package models;
 
 import javax.persistence.Entity;
@@ -481,8 +481,10 @@ public class Collab extends Model {
     	return nom + " " + prenom;
     }
 }
+```
 
 **Modifier la classe Kesako pour ajouter un lien Kesako => collab**
+```java
 package models;
 
 import java.util.Date;
@@ -514,8 +516,9 @@ public class Kesako extends Model {
     @OneToMany(fetch=FetchType.EAGER, targetEntity=Collab.class)
     public Set<Collab> inscrits = new HashSet<Collab>();
 }
-
+```
 **Créer les classes de controller pour les objets persistants**
+```java
 package controllers;
 
 import models.Kesako;
@@ -524,8 +527,9 @@ import models.Kesako;
 public class ControlleurCrudKesako extends CRUD {
 
 }
+```
 
-******
+```java
 package controllers;
 
 import models.Collab;
@@ -534,7 +538,7 @@ import models.Collab;
 public class ControlleurCrudCollab extends CRUD {
 
 }
-
+```
 ** faire afficher les routes de l'application**
 http://localhost:9000/toto
 
@@ -546,8 +550,9 @@ montrer les routes créées par le module CRUD
 
 **installer une route pour le module CRUD**
 ajouter dans le fichier routes : 
+```
 *      /crud              	module:crud
-
+```
 
 **Accéder à la racine du module CRUD**
 http://localhost:9000/crud
@@ -557,21 +562,24 @@ C:\play\demo_kesako\kesako>play crud:ov --template Collab/list
 ouvrir views/ControlleurCrudCollab/list.html
 
 modifier l'affichage de la table : 
+```html
     <div id="crudListTable">
         #{crud.table fields:['matricule', 'nom', 'prenom', 'email'] /}
     </div>
-
+```
 dans layout.html
 enlever le footer
 
 **aller plus loin avec le module**
 * créer physiquemenet les vues
+```
 play crud:ov --template ControlleurCrudKesako/list
 play crud:ov --template ControlleurCrudKesako/show
 play crud:ov --template ControlleurCrudCollab/show
-
+```
 * Modifier les CRUD pour avoir des infos en plus dnas les pages : 
 faire hériter les Controlleurs de CrudKesako
+```java
 package controllers;
 
 import play.db.Model;
@@ -599,11 +607,10 @@ public abstract class CrudKesako extends CRUD {
 			this.description2 = Messages.getMessage(Lang.get(), "crud.description2." + modelName, new Object[] {});
 		}
 	}
-	
 }
-
+```
 * dans Messages : 
-
+```
 crud.descriptionIndex.Collab = Liste des collabs
 crud.titlename1.Collab = Collabs
 crud.description2.Collab = Collaborateur
@@ -611,8 +618,10 @@ crud.description2.Collab = Collaborateur
 crud.descriptionIndex.Kesako = Liste des kesakos
 crud.titlename1.Kesako = Kesakos
 crud.description2.Kesako = Kesako
+```
 
 * modifier la CSS : crud.css
+```css
 /** Administration area **/
 body:before { content:'Play - Demo Kesako'; color:black; font-size:150%; text-transform:uppercase; letter-spacing:0.4em; }
 #crud {
@@ -964,15 +973,19 @@ form .removeAttachment {
 .crudDelete input:hover {
 	opacity: .7;
 }
-
+```
 
 * modifier le format d'affichage des dates dans la table (table.html)
-%{ } else if(_caller.type.getField(field).type == 'date') { }%
+```html
+	%{ } else if(_caller.type.getField(field).type == 'date') { }%
                         	${object[field]?.format()}
+```
 
 * modifier le format d'affichage des dates
 application.conf : 
+```
 date.format.fr=dd/MM/yyyy
+```
 
 
 
