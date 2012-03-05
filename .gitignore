@@ -2,3 +2,8 @@ tmp
 test-result
 precompiled
 demo/logs
+.classpath
+.project
+.settings
+eclipse
+modules
