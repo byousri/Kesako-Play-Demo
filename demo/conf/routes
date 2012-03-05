@@ -6,6 +6,8 @@
 GET     /                                       Application.index
 GET		/delete									Application.delete
 
+*      /crud              						module:crud
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
