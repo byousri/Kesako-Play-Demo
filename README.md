@@ -541,7 +541,7 @@ public class ControleurCrudCollab extends CRUD {
 **Rajouter** une méthode `toString` à la classe `Kesako` et montrer comment le module de CRUD répercute la modification.
 
 ## CRUD avancé
-**Customiser** les écrans
+**Personnaliser** les écrans
 
 ```
 play crud:ov --template Collab/list
