@@ -281,7 +281,7 @@ public static void delete(final Long id) {
 **Edit** `app/controllers/Application.java` - Replace the first line of the method body (`Kesako.save();`) with the following.
 
 ```java
-validation.required("nom", kesako.nom);
+validation.required("kesako.nom", kesako.nom);
 
 if (validation.hasErrors()) {
 	validation.keep();
@@ -308,7 +308,7 @@ if (validation.hasErrors()) {
 
 > Now we get the field name, but not as a formatted label.
 
-**Edit** `conf/messages` - Change the placeholder in `validation.required` to `&{%s}`, and add the line `nom = Le nom du Kesako`
+**Edit** `conf/messages` - Change the placeholder in `validation.required` to `&{%s}`, and add the line `kesako.nom = Le nom du Kesako`
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.
 
@@ -325,7 +325,7 @@ if (validation.hasErrors()) {
 ... and after the text input and button, before the closing `form` tag, add:
 
 ```html
-<p class="error">#{error 'nom'/}</p>
+<p class="error">#{error 'kesako.nom'/}</p>
 ```
 
 **Open** [http://localhost:9000/](http://localhost:9000/) - Show the new validation error.

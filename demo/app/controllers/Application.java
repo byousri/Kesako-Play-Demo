@@ -15,7 +15,7 @@ public class Application extends Controller {
     }
 
 	public static void add(final Kesako kesako) {
-		validation.required("nom", kesako.nom);
+		validation.required("kesako.nom", kesako.nom);
 	
 		if (validation.hasErrors()) {
 			validation.keep();

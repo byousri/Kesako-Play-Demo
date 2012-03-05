@@ -4,4 +4,4 @@
 
 kesako.titre = Kesako
 validation.required = &{%s} est un champ obligatoire
-nom = Le nom du Kesako
+kesako.nom = Le nom du Kesako
