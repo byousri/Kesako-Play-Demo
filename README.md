@@ -547,16 +547,14 @@ public class ControleurCrudCollab extends CRUD {
 play crud:ov --template Collab/list
 ```
 
-Ouvrir views/ControlleurCrudCollab/list.html
+Ouvrir `views/ControlleurCrudCollab/list.html`
 
-modifier l'affichage de la table : 
+**Modifier** l'affichage de la table : 
 
-```
-    <div id="crudListTable">
-    
-        #{crud.table fields:['matricule', 'nom', 'prenom', 'email'] /}
-        
-    </div>
+```html
+<div id="crudListTable">
+	#{crud.table fields:['nom', 'prenom', 'email'] /}
+</div>
 ```
 
 dans layout.html
