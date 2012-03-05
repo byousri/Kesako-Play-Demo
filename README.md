@@ -17,7 +17,8 @@ Largely inspired from [http://www.lunatech-research.com/archives/2010/06/14/how-
 12. Use a Java extensions in the view template.
 13. Add form validation.
 14. Testing 
-15. CRUD 
+15. CRUD simple
+16. CRUD avancé
 
 ## Create and run the application
 
@@ -438,37 +439,31 @@ public class KesakoTest extends UnitTest {
 
 **Select and Start** test `AddKesako` - Test success
 
-## CRUD 
-**activer le module CRUD**
+## CRUD simple
+**Activer** le module CRUD en ajoutant au fichier `/conf/dependencies.yml` les instructions suivantes :
 
-/conf/application.conf file décommenter la ligne : 
-module.crud=${play.path}/modules/crud
+    require:
+        - play -> crud
 
-**regénérer la conf Eclipse du projet**
-play eclipsify kesako
+Lancer la commande `play dependencies` pour résoudre les nouvelles dépendances.
 
-**Créer une classe persistante Collab**
+**Regénérer** la conf Eclipse du projet
 
-```
+    play eclipsify
+
+**Créer*** une classe persistante `Collab`
+
+```java
 package models;
 
 import javax.persistence.Entity;
 
-import play.data.validation.MinSize;
-import play.data.validation.Required;
+import play.data.validation.*;
 import play.db.jpa.Model;
 
-/**
- * Classe persistante représentant les cossaborateurs de SQLI.
- * @author Sylvain
- */
 @Entity
 public class Collab extends Model {
 
-    @Required
-    @MinSize(8)
-	public String matricule;
-    
     @Required
     public String nom;
     
@@ -476,7 +471,7 @@ public class Collab extends Model {
     public String prenom;
     
     @Required
-    @MinSize(10)
+    @Email
     public String email;
     
     public String toString() {
@@ -485,94 +480,74 @@ public class Collab extends Model {
 }
 ```
 
-**Modifier la classe Kesako pour ajouter un lien Kesako => collab**
+**Modifier** la classe `Kesako` pour ajouter un lien `Kesako` => `Collab`
 
-```
+```java
 package models;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
-import play.data.validation.MinSize;
-import play.data.validation.Required;
+import play.data.validation.*;
 import play.db.jpa.Model;
 
-/**
- * Classe persistante représentant un kesako
- * @author Sylvain
- */
 @Entity
 public class Kesako extends Model {
 
     @Required
-    @MinSize(8)
+    @MinSize(3)
 	public String nom;
     
-    @Required
     public Date date;
     
     @OneToMany(fetch=FetchType.EAGER, targetEntity=Collab.class)
     public Set<Collab> inscrits = new HashSet<Collab>();
 }
 ```
-**Créer les classes de controller pour les objets persistants**
+**Créer** les classes de controller pour les objets persistants
 
-```
+```java
 package controllers;
 
 import models.Kesako;
 
 @CRUD.For(Kesako.class)
-public class ControlleurCrudKesako extends CRUD {
+public class ControleurCrudKesako extends CRUD {
 
 }
 ```
 
-```
+```java
 package controllers;
 
 import models.Collab;
 
 @CRUD.For(Collab.class)
-public class ControlleurCrudCollab extends CRUD {
+public class ControleurCrudCollab extends CRUD {
 
 }
 ```
 
-** faire afficher les routes de l'application**
-
-[http://localhost:9000/toto](http://localhost:9000/toto)
-
-
-
-**Accéder à l'acran de gestion des entités**
-
-[http://localhost:9000/crud/](http://localhost:9000/crud/)
-montrer les routes créées par le module CRUD
-
-**installer une route pour le module CRUD**
-
-ajouter dans le fichier routes : 
+**Installer** une route pour le module CRUD en ajoutant dans le fichier `conf/routes` : 
 ```
 *      /crud              	module:crud
 ```
 
-**Accéder à la racine du module CRUD**
+**Montrer** les routes créées automatiquement http://localhost:9000/toto](http://localhost:9000/toto) 
 
-[http://localhost:9000/crud](http://localhost:9000/crud)
+**Accéder** à l'écran de gestion des entités [http://localhost:9000/crud/](http://localhost:9000/crud/) et naviguer dans les entités.
 
-**Customiser les écrans**
+** Rajouter** une méthode `toString` à la classe `Kesako` et montrer comment le module de CRUD répercute la modification.
+
+## CRUD avancé
+**Customiser** les écrans
 
 ```
-C:\play\demo_kesako\kesako>play crud:ov --template Collab/list
+play crud:ov --template Collab/list
 ```
 
-ouvrir views/ControlleurCrudCollab/list.html
+Ouvrir views/ControlleurCrudCollab/list.html
 
 modifier l'affichage de la table : 
 
