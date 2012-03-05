@@ -538,7 +538,7 @@ public class ControleurCrudCollab extends CRUD {
 
 **Accéder** à l'écran de gestion des entités [http://localhost:9000/crud/](http://localhost:9000/crud/) et naviguer dans les entités.
 
-** Rajouter** une méthode `toString` à la classe `Kesako` et montrer comment le module de CRUD répercute la modification.
+**Rajouter** une méthode `toString` à la classe `Kesako` et montrer comment le module de CRUD répercute la modification.
 
 ## CRUD avancé
 **Customiser** les écrans
