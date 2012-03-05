@@ -559,12 +559,11 @@ play crud:ov --template Collab/list
 
 **Lancer** `play crud:override --layout` puis supprimer le footer dans `views/CRUD/layout.html`
 
-**Créer** physiquemenet les vues
-```
-play crud:ov --template ControleurCrudKesako/list
-play crud:ov --template ControleurCrudKesako/show
-play crud:ov --template ControleurCrudCollab/show
-```
+**Créer** physiquemement les vues
+
+    play crud:ov --template ControleurCrudKesako/list
+    play crud:ov --template ControleurCrudKesako/show
+    play crud:ov --template ControleurCrudCollab/show
 
 **Modifier** les CRUD pour avoir des infos en plus dans les pages. Faire hériter les contrôleurs de CrudKesako
 
@@ -607,7 +606,7 @@ crud.titlename1.Kesako = Kesakos
 crud.description2.Kesako = Kesako
 ```
 
-**Lancer** `play crud:override --css` puis modifier le fichier `public/stylesheets/CRUD/crud.css
+**Lancer** `play crud:override --css` puis modifier le fichier `public/stylesheets/CRUD/crud.css`
 
 ```css
 body:before { content:'Play - Demo Kesako'; color:black; font-size:150%; text-transform:uppercase; letter-spacing:0.4em; }
