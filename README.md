@@ -547,7 +547,7 @@ public class ControleurCrudCollab extends CRUD {
 play crud:ov --template Collab/list
 ```
 
-Ouvrir `views/ControlleurCrudCollab/list.html`
+**Ouvrir** `views/ControleurCrudCollab/list.html`
 
 **Modifier** l'affichage de la table : 
 
@@ -557,32 +557,24 @@ Ouvrir `views/ControlleurCrudCollab/list.html`
 </div>
 ```
 
-dans layout.html
-enlever le footer
+**Lancer** `play crud:override --layout` puis supprimer le footer dans `views/CRUD/layout.html`
 
-**aller plus loin avec le module**
-* créer physiquemenet les vues
-
+**Créer** physiquemenet les vues
 ```
-play crud:ov --template ControlleurCrudKesako/list
-play crud:ov --template ControlleurCrudKesako/show
-play crud:ov --template ControlleurCrudCollab/show
+play crud:ov --template ControleurCrudKesako/list
+play crud:ov --template ControleurCrudKesako/show
+play crud:ov --template ControleurCrudCollab/show
 ```
 
-* Modifier les CRUD pour avoir des infos en plus dnas les pages : 
-faire hériter les Controlleurs de CrudKesako
+**Modifier** les CRUD pour avoir des infos en plus dans les pages. Faire hériter les contrôleurs de CrudKesako
 
-```
+```java
 package controllers;
 
 import play.db.Model;
 import play.i18n.Lang;
 import play.i18n.Messages;
 
-/**
- *  la même chose que le CRUD, mais capable de donner des informations customisées concernant la classe persistante
- * @author Sylvain
- */
 public abstract class CrudKesako extends CRUD {
 
 	public static ObjectTypeKesako createObjectType(Class<? extends Model> classePersistante) {
@@ -603,9 +595,7 @@ public abstract class CrudKesako extends CRUD {
 }
 ```
 
-
-** dans Messages : **
-
+**Ajouter** dans `conf/messages`
 
 ```
 crud.descriptionIndex.Collab = Liste des collabs
@@ -617,9 +607,9 @@ crud.titlename1.Kesako = Kesakos
 crud.description2.Kesako = Kesako
 ```
 
-* modifier la CSS : crud.css
+**Lancer** `play crud:override --css` puis modifier le fichier `public/stylesheets/CRUD/crud.css
 
-```
+```css
 body:before { content:'Play - Demo Kesako'; color:black; font-size:150%; text-transform:uppercase; letter-spacing:0.4em; }
 #crud {
     color: black; font-family: Arial,Verdana,Helvetica,sans-serif; background: url(http://www.sqli.com/design/fre/images/body-home-03.jpg) repeat scroll 0 0 #000000; width: 80%;
@@ -800,20 +790,4 @@ form .removeAttachment {
 .crudDelete input:hover {
 	opacity: .7;
 }
-
 ```
-
-* modifier le format d'affichage des dates dans la table (table.html)
-```html
-	%{ } else if(_caller.type.getField(field).type == 'date') { }%
-                        	${object[field]?.format()}
-```
-
-* modifier le format d'affichage des dates
-application.conf : 
-```
-date.format.fr=dd/MM/yyyy
-```
-
-
-

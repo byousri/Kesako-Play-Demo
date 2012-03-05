@@ -3,6 +3,6 @@ package controllers;
 import models.Collab;
 
 @CRUD.For(Collab.class)
-public class ControleurCrudCollab extends CRUD {
+public class ControleurCrudCollab extends CrudKesako {
 
 }

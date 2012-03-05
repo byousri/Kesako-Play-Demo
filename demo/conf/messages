@@ -5,3 +5,11 @@
 kesako.titre = Kesako
 validation.required = &{%s} est un champ obligatoire
 kesako.nom = Le nom du Kesako
+
+crud.descriptionIndex.Collab = Liste des collabs
+crud.titlename1.Collab = Collabs
+crud.description2.Collab = Collaborateur
+
+crud.descriptionIndex.Kesako = Liste des kesakos
+crud.titlename1.Kesako = Kesakos
+crud.description2.Kesako = Kesako
